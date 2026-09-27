@@ -1,0 +1,39 @@
+{
+  "resourceType": "Coverage",
+  "status": "active",
+  "type": {
+    "coding": [
+      {
+        "system": "urn:openimis:coverage-type",
+        "code": "POLICY",
+        "display": "Insurance Policy"
+      }
+    ]
+  },
+  "subscriberId": "CHF-170000",
+  "beneficiary": {
+    "reference": "Patient/CHANGEME"
+  },
+  "period": {
+    "start": "2025-01-01",
+    "end": "2026-01-01"
+  },
+  "payor": [
+    {
+      "reference": "Organization/CHANGEME"
+    }
+  ],
+  "class": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "urn:openimis:coverage-class",
+            "code": "policy"
+          }
+        ]
+      },
+      "value": "OPENIMIS-TEST-POLICY"
+    }
+  ]
+}

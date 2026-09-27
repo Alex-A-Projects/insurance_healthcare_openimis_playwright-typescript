@@ -1,0 +1,43 @@
+version: '3.8'
+
+# Run the openIMIS demo PostgreSQL locally so the database tests
+# in tests/database/ can actually execute against a real schema.
+#
+#   docker compose up -d
+#   PG_HOST=localhost PG_PORT=5432 PG_DATABASE=test_imis \
+#   PG_USER=IMISuser PG_PASSWORD=IMISuser@1234 \
+#   npm run test:db
+#
+# The image lives at:
+#   https://github.com/openimis/openimis-be-docker
+# and is built on top of the official openIMIS PostgreSQL image:
+#   ghcr.io/openimis/openimis-pgsql:develop
+#
+# NOTE: This image starts the schema but does NOT seed demo data
+# by default. Most tests skip via test.skip(true, ...) when no rows
+# are present, but the `countX` smoke tests pass against an empty
+# schema (zero is non-negative). To get real seed data, either:
+#   - set DEMO_DATASET=true when running the container, or
+#   - run the openimis-be Docker image instead (it seeds on first boot).
+
+services:
+  postgres:
+    image: ghcr.io/openimis/openimis-pgsql:develop
+    container_name: openimis-test-postgres
+    environment:
+      POSTGRES_DB: test_imis
+      POSTGRES_USER: IMISuser
+      POSTGRES_PASSWORD: IMISuser@1234
+    ports:
+      - '5432:5432'
+    volumes:
+      - openimis-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U IMISuser -d test_imis']
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  openimis-pg-data:
+    name: openimis-test-postgres-data

@@ -1,0 +1,31 @@
+{
+  "name": "openimis-playwright-typescript",
+  "version": "1.0.0",
+  "description": "Playwright + TypeScript automation test suite for openIMIS (insurance/healthcare) using POM, REST API, and PostgreSQL database testing",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test tests/ui",
+    "test:api": "playwright test tests/api",
+    "test:db": "playwright test tests/database",
+    "test:integration": "playwright test tests/integration",
+    "test:headed": "playwright test --headed",
+    "test:ui-mode": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:lint": "tsc --noEmit",
+    "codegen": "playwright codegen https://demo.openimis.org",
+    "install:browsers": "playwright install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^20.11.0",
+    "@types/pg": "^8.11.6",
+    "dotenv": "^16.4.5",
+    "pg": "^8.13.0",
+    "typescript": "^5.4.0"
+  }
+}

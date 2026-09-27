@@ -1,0 +1,19 @@
+{
+  "resourceType": "Patient",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "LOADTEST",
+      "given": ["Auto", "QA"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-01-01",
+  "identifier": [
+    {
+      "system": "urn:openimis:chf-id",
+      "value": "CHANGEME-CHF-ID"
+    }
+  ]
+}
